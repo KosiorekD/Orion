@@ -6,17 +6,29 @@ class Interpreter:
         self.name = name
         self.ignoredCharacters = [","]
 
-    def talk(self, text):
+    def talkTo(self, text):
         for remove in range(len(self.ignoredCharacters)):
             text = text.replace(self.ignoredCharacters[remove], "")
         text = text.lower()
         self.text = text.split()
+
+    def response(self):
+        print(":Under Consturction - Unable to communicate yet:")
 
 Nouns = FileLoad("Data/Nouns.csv")
 Verbs = FileLoad("Data/Verbs.csv")
 Adjectives = FileLoad("Data/Adjectives.csv")
 
 Orion = Interpreter("Orion")
-Orion.talk("Hello, how are you today?")
+print("-- A conversation has begun with", Orion.name, "--")
 
-print(Orion.text)
+while True:
+    try:
+        print(" User : ", end="", flush=True)
+        userText = input("")
+
+        Orion.talkTo(userText)
+        Orion.response()
+    except KeyboardInterrupt:
+        print("\n", Orion.name ,": Goodbye")
+        break
