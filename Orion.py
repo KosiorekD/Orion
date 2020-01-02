@@ -1,25 +1,13 @@
 #!/usr/bin/python
-from Word_pre_loader import *
+import csv
+from Pre_Loader import *
+from Bot import *
 
-class Interpreter:
-    def __init__(self, name):
-        self.name = name
-        self.ignoredCharacters = [","]
+Nouns = Load("Data/Nouns.csv")
+Verbs = Load("Data/Verbs.csv")
+Adjectives = Load("Data/Adjectives.csv")
 
-    def talkTo(self, text):
-        for remove in range(len(self.ignoredCharacters)):
-            text = text.replace(self.ignoredCharacters[remove], "")
-        text = text.lower()
-        self.text = text.split()
-
-    def response(self):
-        print(":Under Consturction - Unable to communicate yet:")
-
-Nouns = FileLoad("Data/Nouns.csv")
-Verbs = FileLoad("Data/Verbs.csv")
-Adjectives = FileLoad("Data/Adjectives.csv")
-
-Orion = Interpreter("Orion")
+Orion = Bot("Orion")
 print("-- A conversation has begun with", Orion.name, "--")
 
 while True:
@@ -29,6 +17,11 @@ while True:
 
         Orion.talkTo(userText)
         Orion.response()
+
     except KeyboardInterrupt:
         print("\n", Orion.name ,": Goodbye")
+        del Orion
+        del Nouns
+        del Verbs
+        del Adjectives
         break

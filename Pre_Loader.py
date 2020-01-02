@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import csv
 
-class FileLoad:
+class Load:
     def __init__(self, file):
         self.file = file
         self.data = []
