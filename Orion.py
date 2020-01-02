@@ -17,6 +17,7 @@ while True:
 
         Orion.talkTo(userText)
         Orion.response()
+        print(Orion.text)
 
     except KeyboardInterrupt:
         print("\n", Orion.name ,": Goodbye")

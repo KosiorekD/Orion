@@ -4,9 +4,9 @@ class Bot:
         self.ignoredCharacters = [","]
 
     def talkTo(self, text):
+        text = text.lower()
         for remove in range(len(self.ignoredCharacters)):
             text = text.replace(self.ignoredCharacters[remove], "")
-        text = text.lower()
         self.text = text.split()
 
     def response(self):
